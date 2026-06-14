@@ -3366,7 +3366,7 @@ body::after {
     align-items: center;
     justify-content: space-between;
     padding: 20px 24px 16px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid var(--ui-divider, rgba(255, 255, 255, 0.08));
 }
 
 .profile-modal-header h3 {
@@ -3381,8 +3381,8 @@ body::after {
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--ui-divider, rgba(255, 255, 255, 0.15));
+    background: var(--ui-hover, rgba(255, 255, 255, 0.05));
     color: var(--text-dim, #e0e8f0);
     font-size: 18px;
     cursor: pointer;
@@ -3443,8 +3443,8 @@ body::after {
     top: 95px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(20, 25, 45, 0.96);
-    border: 1px solid rgba(0, 245, 255, 0.25);
+    background: var(--ui-glass, rgba(20, 25, 45, 0.96));
+    border: 1px solid var(--ui-glass-border, rgba(0, 245, 255, 0.25));
     border-radius: 12px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 245, 255, 0.1);
     z-index: 10001;
@@ -3485,7 +3485,7 @@ body::after {
 }
 
 .avatar-option:first-child {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid var(--ui-divider, rgba(255, 255, 255, 0.06));
 }
 
 .avatar-option-icon {
@@ -3511,8 +3511,8 @@ body::after {
     width: 100%;
     padding: 10px 14px;
     border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--ui-divider, rgba(255, 255, 255, 0.12));
+    background: var(--ui-input, rgba(255, 255, 255, 0.06));
     color: var(--text-holo, #fff);
     font-size: 14px;
     outline: none;
@@ -3523,20 +3523,20 @@ body::after {
 .profile-field select:focus {
     border-color: var(--primary-holo, #00f5ff);
     box-shadow: 0 0 15px rgba(var(--primary-holo-rgb, 0, 245, 255), 0.2);
-    background: rgba(255, 255, 255, 0.08);
+    background: var(--ui-hover, rgba(255, 255, 255, 0.08));
 }
 
 .profile-field input::placeholder {
-    color: rgba(255, 255, 255, 0.3);
+    color: var(--text-muted, rgba(255, 255, 255, 0.3));
 }
 
 .profile-field select option {
-    background: #1a1d35;
-    color: #fff;
+    background: var(--ui-input, #1a1d35);
+    color: var(--text-holo, #fff);
 }
 
 .profile-field .hint {
-    color: rgba(255, 255, 255, 0.35);
+    color: var(--text-muted, rgba(255, 255, 255, 0.35));
     font-size: 11px;
     margin-top: 4px;
 }
@@ -3578,13 +3578,14 @@ body::after {
 }
 
 .profile-btn-secondary {
-    background: rgba(255, 255, 255, 0.06);
+    background: var(--ui-hover, rgba(255, 255, 255, 0.06));
     color: var(--text-dim, #e0e8f0);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid var(--ui-divider, rgba(255, 255, 255, 0.12));
 }
 
 .profile-btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.12);
+    background: var(--ui-input, rgba(255, 255, 255, 0.12));
+    border-color: var(--primary-holo, #00f5ff);
     transform: translateY(-2px);
 }
 
@@ -3877,11 +3878,6 @@ html[data-theme$="-light"] .notification-btn{color:rgba(62,58,48,.55)!important}
 html[data-theme$="-light"] .search-btn{color:rgba(62,58,48,.55)!important}
 html[data-theme$="-light"] ::-webkit-scrollbar-track{background:rgba(139,119,80,.04)!important}
 html[data-theme$="-light"] ::-webkit-scrollbar-thumb{background:rgba(139,119,80,.12)!important}
-html[data-theme$="-light"] .profile-panel,.profile-modal{background:rgba(243,239,228,.96)!important;border-color:rgba(139,119,80,.08)!important;color:#3d3929!important}
-html[data-theme$="-light"] .profile-panel label,.profile-modal label,.profile-panel h3,.profile-modal h3{color:#3d3929!important}
-html[data-theme$="-light"] .profile-panel input,.profile-modal input{background:rgba(139,119,80,.04)!important;border-color:rgba(139,119,80,.1)!important;color:#3d3929!important}
-html[data-theme$="-light"] .profile-btn,.profile-modal .profile-btn{background:rgba(139,119,80,.06)!important;border-color:rgba(139,119,80,.1)!important;color:#3d3929!important}
-html[data-theme$="-light"] .profile-btn.primary,.profile-modal .profile-btn.primary{background:var(--primary-holo)!important;color:#fff!important}
 
 /* ══════════ 全局滚动条彻底隐藏（文件末尾，最高优先级） ══════════ */
 ::-webkit-scrollbar{display:none!important;width:0!important;height:0!important}
