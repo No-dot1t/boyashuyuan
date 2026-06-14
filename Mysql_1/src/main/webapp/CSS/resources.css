@@ -1,0 +1,289 @@
+/* ==================================================================
+   Resources Center v3.0 — Standard Book Cards + Glass Design
+   Card styles aligned with majorBooks.css
+   ================================================================== */
+
+/* === CSS Variables === */
+:root {
+    --rc-bg: #060b14;
+    --rc-surface: rgba(15, 23, 42, 0.65);
+    --rc-border: rgba(125, 211, 252, 0.04);
+    --rc-border-glow: rgba(52, 211, 153, 0.25);
+    --rc-text: #e2e8f0;
+    --rc-text-dim: rgba(255, 255, 255, 0.25);
+    --rc-text-faint: rgba(255, 255, 255, 0.15);
+    --rc-accent: #34d399;
+    --rc-accent2: #3b82f6;
+    --rc-accent3: #8b5cf6;
+    --rc-glow: 0 4px 24px rgba(0, 0, 0, 0.5);
+    --rc-transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* === Base === */
+html, body {
+    background: var(--rc-bg);
+    margin: 0; padding: 0;
+    min-height: 100vh;
+    color: var(--rc-text);
+    font-family: 'Inter', 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    overflow-x: hidden;
+}
+
+/* === Floating Orbs === */
+.rc-orb {
+    position: fixed; border-radius: 50%;
+    filter: blur(120px); z-index: 0;
+    pointer-events: none; opacity: 0.1; will-change: transform;
+}
+.rc-orb-1 { width:520px;height:520px; background:radial-gradient(circle at 40% 40%,#34d399,transparent 70%); top:-140px;left:-100px; animation:rcOrb1 22s ease-in-out infinite; }
+.rc-orb-2 { width:420px;height:420px; background:radial-gradient(circle at 50% 50%,#3b82f6,transparent 70%); bottom:-120px;right:-90px; animation:rcOrb2 24s ease-in-out infinite; }
+.rc-orb-3 { width:380px;height:380px; background:radial-gradient(circle at 45% 45%,#8b5cf6,transparent 70%); top:55%;left:55%; animation:rcOrb3 26s ease-in-out infinite; }
+@keyframes rcOrb1{0%,100%{transform:translate(0,0) scale(1)}25%{transform:translate(90px,70px) scale(1.12)}50%{transform:translate(50px,-40px) scale(.88)}75%{transform:translate(-40px,40px) scale(1.06)}}
+@keyframes rcOrb2{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(-70px,-50px) scale(1.1)}66%{transform:translate(-25px,70px) scale(.9)}}
+@keyframes rcOrb3{0%,100%{transform:translate(0,0) scale(1)}30%{transform:translate(70px,-60px) scale(.93)}60%{transform:translate(-50px,30px) scale(1.08)}}
+
+/* === Container === */
+.rc-container { max-width: 1260px; margin: 0 auto; padding: 28px 32px 48px; position: relative; z-index: 1; }
+
+/* === Header === */
+.rc-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 28px 36px; margin-bottom: 24px;
+    background: linear-gradient(135deg, rgba(20,30,60,.55), rgba(30,25,55,.5));
+    border: 1px solid var(--rc-border-glow);
+    border-radius: 24px;
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    box-shadow: var(--rc-glow);
+    flex-wrap: wrap; gap: 16px;
+    position: relative; overflow: hidden;
+}
+.rc-header::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(52,211,153,.35), rgba(59,130,246,.25), transparent);
+}
+.rc-header-left { z-index: 1; }
+.rc-title {
+    font-size: 1.6rem; font-weight: 900; margin: 0 0 6px;
+    background: linear-gradient(135deg, #34d399, #3b82f6, #8b5cf6);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; letter-spacing: -.5px;
+}
+.rc-subtitle { font-size: .82rem; color: #64748b; font-weight: 500; }
+.rc-subtitle strong { color: #7dd3fc; font-weight: 700; }
+.rc-header-right { display: flex; gap: 12px; align-items: center; z-index: 1; }
+
+/* === Search === */
+.rc-search-wrap { position: relative; }
+.rc-search-input {
+    background: rgba(18,28,50,.6); border: 1px solid rgba(125,211,252,.15);
+    border-radius: 12px; color: var(--rc-text);
+    padding: 10px 38px 10px 16px; font-size: .88rem; width: 240px;
+    outline: none; transition: all .3s;
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+.rc-search-input:focus { border-color: rgba(52,211,153,.4); box-shadow: 0 0 24px rgba(52,211,153,.1); width: 280px; }
+.rc-search-input::placeholder { color: #475569; }
+.rc-search-icon { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); font-size: .9rem; opacity: .5; pointer-events: none; }
+.rc-sort {
+    background: rgba(18,28,50,.6); border: 1px solid rgba(125,211,252,.15);
+    border-radius: 10px; color: var(--rc-text); padding: 9px 32px 9px 14px;
+    font-size: .85rem; outline: none; cursor: pointer;
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    appearance: none; -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2364748b' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 12px center;
+}
+.rc-sort option { background: #0f172a; color: var(--rc-text); }
+
+/* === Categories === */
+.rc-categories { display: flex; gap: 8px; padding: 14px 0 20px; flex-wrap: wrap; overflow-x: auto; scrollbar-width: none; }
+.rc-categories::-webkit-scrollbar { display: none; }
+.rc-cat {
+    background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06);
+    border-radius: 10px; color: #94a3b8; padding: 7px 16px; font-size: .82rem;
+    font-weight: 600; cursor: pointer; transition: all var(--rc-transition);
+    white-space: nowrap; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); user-select: none;
+}
+.rc-cat:hover { background: rgba(255,255,255,.07); border-color: rgba(52,211,153,.2); color: #cbd5e1; transform: translateY(-1px); }
+.rc-cat.active {
+    background: linear-gradient(135deg, rgba(52,211,153,.15), rgba(59,130,246,.1));
+    border-color: var(--rc-border-glow); color: var(--rc-accent);
+    box-shadow: 0 0 16px rgba(52,211,153,.1);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   STANDARD BOOK CARD (aligned with majorBooks.css)
+   ═══════════════════════════════════════════════════════════════════ */
+
+.book-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+}
+
+.book-card {
+    background: linear-gradient(160deg, rgba(18,28,50,.4), rgba(12,18,35,.55));
+    border: 1px solid var(--rc-border);
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all var(--rc-transition);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    animation: cardIn .5s ease forwards;
+    opacity: 0;
+}
+@keyframes cardIn { to { opacity: 1; } }
+
+/* 光晕背景 */
+.book-card::before {
+    content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+    background: radial-gradient(circle at center, rgba(125,211,252,.03), transparent 60%);
+    opacity: 0; transition: opacity var(--rc-transition); pointer-events: none;
+}
+.book-card:hover::before { opacity: 1; }
+.book-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 45px rgba(0,0,0,.5);
+    border-color: rgba(125,211,252,.12);
+}
+
+/* ── 封面 ── */
+.card-cover {
+    position: relative; width: 100%; height: 200px;
+    overflow: hidden; display: flex; align-items: center; justify-content: center;
+    background: rgba(0,0,0,.4);
+}
+.card-cover img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+.book-card:hover .card-cover img { transform: scale(1.08); }
+.cover-placeholder {
+    display: flex; align-items: center; justify-content: center;
+    width: 100%; height: 100%; font-size: 3rem; opacity: .25;
+}
+
+/* 热门标记 */
+.card-hot {
+    position: absolute; top: 8px; right: 8px;
+    font-size: .6rem; font-weight: 700;
+    padding: 2px 8px; border-radius: 8px;
+    background: rgba(239,68,68,.15); border: 1px solid rgba(239,68,68,.25);
+    color: #f87171; backdrop-filter: blur(4px); z-index: 2;
+}
+
+/* 收藏按钮 */
+.card-bookmark {
+    position: absolute; top: 8px; left: 8px;
+    width: 28px; height: 28px; border-radius: 8px;
+    border: 1px solid rgba(255,255,255,.08); background: rgba(0,0,0,.35);
+    color: rgba(255,255,255,.25); cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 2; opacity: 0; transition: all .25s;
+}
+.book-card:hover .card-bookmark { opacity: 1; }
+.card-bookmark:hover { background: rgba(125,211,252,.15); color: #7dd3fc; transform: scale(1.12); }
+.card-bookmark.bookmarked { opacity: 1; color: #7dd3fc; background: rgba(125,211,252,.12); }
+.card-bookmark.bookmarked svg { fill: #7dd3fc; stroke: #7dd3fc; }
+
+/* ── 内容 ── */
+.card-body { padding: .7rem .8rem .3rem; flex: 1; display: flex; flex-direction: column; }
+.card-title {
+    font-size: .85rem; font-weight: 600; color: #e2e8f0;
+    margin-bottom: 2px;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.card-author { font-size: .68rem; color: var(--rc-text-dim); margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.card-summary {
+    font-size: .66rem; color: var(--rc-text-faint); line-height: 1.5;
+    -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+    overflow: hidden; display: -webkit-box; margin: 4px 0; flex: 1;
+}
+.card-meta-line { display: none; gap: 6px; flex-wrap: wrap; font-size: .62rem; margin-top: auto; padding-top: 6px; }
+.card-year, .card-format, .card-dl { color: var(--rc-text-faint); }
+
+/* ── 底部 ── */
+.card-footer {
+    display: flex; align-items: center; padding: .4rem .8rem;
+    border-top: 1px solid rgba(125,211,252,.03);
+}
+.cf-type {
+    font-size: .58rem; padding: 1px 7px; border-radius: 6px;
+    background: rgba(125,211,252,.05); border: 1px solid rgba(125,211,252,.06);
+    color: rgba(125,211,252,.35);
+}
+.cf-read {
+    font-size: .62rem; color: rgba(125,211,252,.3); margin-left: auto;
+    padding: 2px 8px; border-radius: 6px; border: 1px solid transparent;
+    cursor: pointer; transition: all .35s; white-space: nowrap;
+}
+.book-card:hover .cf-read {
+    color: #7dd3fc; border-color: rgba(125,211,252,.15);
+    background: rgba(125,211,252,.06);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   PAGINATION / EMPTY / TOAST
+   ═══════════════════════════════════════════════════════════════════ */
+
+.rc-pagination { display: flex; justify-content: center; align-items: center; gap: 6px; margin-top: 32px; flex-wrap: wrap; }
+.rc-page-btn {
+    background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06);
+    border-radius: 8px; color: #94a3b8; padding: 7px 14px; font-size: .82rem;
+    font-weight: 600; cursor: pointer; transition: all .25s; min-width: 38px; text-align: center; user-select: none;
+}
+.rc-page-btn:hover { background: rgba(255,255,255,.07); border-color: rgba(52,211,153,.2); color: var(--rc-text); }
+.rc-page-btn.active {
+    background: linear-gradient(135deg, rgba(52,211,153,.2), rgba(59,130,246,.15));
+    border-color: var(--rc-border-glow); color: var(--rc-accent);
+    box-shadow: 0 0 14px rgba(52,211,153,.1);
+}
+.rc-page-dots { color: #475569; padding: 0 4px; font-size: .82rem; }
+.rc-page-info { color: #475569; font-size: .78rem; margin-right: 12px; }
+
+.rc-empty { text-align: center; padding: 80px 20px; color: #64748b; grid-column: 1/-1; }
+.rc-empty-icon { font-size: 3.5rem; margin-bottom: 14px; opacity: .45; }
+.rc-empty p { margin: 8px 0; font-size: .9rem; }
+.rc-retry-btn {
+    margin-top: 16px; padding: 9px 24px;
+    background: rgba(52,211,153,.08); border: 1px solid var(--rc-border-glow);
+    border-radius: 8px; color: var(--rc-accent); font-size: .82rem; font-weight: 600; cursor: pointer; transition: all .25s;
+}
+.rc-retry-btn:hover { background: rgba(52,211,153,.18); box-shadow: 0 0 20px rgba(52,211,153,.1); }
+
+.rc-loading { text-align: center; padding: 80px 20px; color: #64748b; grid-column: 1/-1; }
+.rc-spinner { width: 36px; height: 36px; margin: 0 auto 14px; border: 3px solid rgba(52,211,153,.12); border-top-color: var(--rc-accent); border-radius: 50%; animation: rcSpin .8s linear infinite; }
+@keyframes rcSpin { to { transform: rotate(360deg); } }
+
+.rc-toast {
+    position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(20px);
+    padding: 12px 28px; border-radius: 50px; font-size: .85rem; font-weight: 600;
+    z-index: 2000; opacity: 0; pointer-events: none;
+    transition: all .4s cubic-bezier(.4,0,.2,1);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 8px 32px rgba(0,0,0,.6); white-space: nowrap;
+    background: rgba(10,16,30,.95); border: 1px solid rgba(255,255,255,.08); color: var(--rc-text);
+}
+.rc-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+.rc-toast-error { border-color: rgba(239,68,68,.35); color: #f87171; background: rgba(20,10,10,.95); }
+.rc-toast-info { border-color: rgba(125,211,252,.25); color: #7dd3fc; }
+
+/* === Responsive === */
+@media (max-width: 1024px) {
+    .book-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 768px) {
+    .rc-container { padding: 16px 14px 32px; }
+    .rc-header { padding: 22px 20px; border-radius: 18px; }
+    .rc-header-right { width: 100%; }
+    .rc-search-wrap { width: 100%; }
+    .rc-search-input, .rc-search-input:focus { width: 100%; }
+    .book-grid { grid-template-columns: repeat(2, 1fr); gap: .7rem; }
+    .card-cover { height: 170px; }
+    .rc-title { font-size: 1.4rem; }
+}
+@media (max-width: 480px) {
+    .book-grid { grid-template-columns: 1fr 1fr; gap: .5rem; }
+    .card-cover { height: 150px; }
+    .card-title { font-size: .78rem; }
+    .rc-title { font-size: 1.25rem; }
+}

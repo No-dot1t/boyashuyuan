@@ -1,0 +1,501 @@
+/* =============================================================================
+   notes.css  ——  笔记中心样式
+   ============================================================================= */
+
+/* 容器 */
+.nt-container {
+    min-height: 100vh;
+    background: linear-gradient(160deg, #070b14, #0a101e, #0d1225);
+    color: #e0e7f0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* 头部 */
+.nt-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 32px;
+    border-bottom: 1px solid rgba(125,211,252,0.08);
+    background: rgba(18,28,50,0.4);
+    backdrop-filter: blur(8px);
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.nt-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #7dd3fc, #a78bfa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0 0 4px 0;
+}
+
+.nt-subtitle {
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+.nt-header-right {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.nt-search-wrap {
+    position: relative;
+}
+
+.nt-search-input {
+    background: rgba(18,28,50,0.6);
+    border: 1px solid rgba(125,211,252,0.15);
+    border-radius: 8px;
+    color: #e0e7f0;
+    padding: 8px 36px 8px 14px;
+    font-size: 0.9rem;
+    width: 240px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.nt-search-input:focus {
+    border-color: rgba(125,211,252,0.4);
+}
+
+.nt-search-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.9rem;
+    pointer-events: none;
+}
+
+/* 按钮 */
+.nt-btn {
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+    font-weight: 500;
+}
+
+.nt-btn-primary {
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(124,58,237,0.3);
+}
+
+.nt-btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(124,58,237,0.4);
+}
+
+.nt-btn-cancel {
+    background: rgba(255,255,255,0.06);
+    color: #94a3b8;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* 内容区 */
+.nt-content {
+    padding: 24px 32px;
+}
+
+/* ═══ 统计仪表盘 ═══ */
+.nt-stats-bar {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.nt-stat-item {
+    flex: 1; min-width: 140px;
+    display: flex; align-items: center; gap: 12px;
+    padding: 16px 18px;
+    background: rgba(18,28,50,0.5);
+    border: 1px solid rgba(125,211,252,0.1);
+    border-radius: 14px;
+    transition: all .3s cubic-bezier(.22,.61,.36,1);
+    position: relative; overflow: hidden;
+}
+
+.nt-stat-item::before {
+    content: ''; position: absolute; inset: 0; border-radius: 14px; opacity: 0;
+    background: radial-gradient(ellipse at top left, rgba(125,211,252,.06), transparent 60%);
+    transition: opacity .4s;
+}
+
+.nt-stat-item:hover {
+    border-color: rgba(125,211,252,.25);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(0,0,0,.3);
+}
+
+.nt-stat-item:hover::before { opacity: 1; }
+
+.nt-stat-icon {
+    width: 42px; height: 42px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; flex-shrink: 0;
+}
+
+.nt-stat-val {
+    font-size: 1.3rem; font-weight: 800; color: #e2e8f0; line-height: 1.2;
+}
+
+.nt-stat-lbl {
+    font-size: .7rem; color: #64748b; letter-spacing: .5px;
+}
+
+/* ═══ 图表区 ═══ */
+.nt-charts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.nt-chart-card {
+    background: rgba(18,28,50,0.5);
+    border: 1px solid rgba(125,211,252,0.08);
+    border-radius: 16px;
+    padding: 18px 16px 14px;
+    transition: border-color .3s;
+}
+
+.nt-chart-card:hover {
+    border-color: rgba(125,211,252,.18);
+}
+
+.nt-chart-wide {
+    grid-column: 1 / -1;
+}
+
+.nt-chart-card h3 {
+    font-size: .88rem; font-weight: 600; color: #e2e8f0;
+    margin: 0 0 2px 0; display: flex; align-items: center; gap: 6px;
+}
+
+.nt-chart-sub {
+    font-size: .66rem; color: #64748b; margin-bottom: 4px;
+}
+
+.nt-chart-box {
+    width: 100%;
+}
+
+/* 笔记列表分隔标题 */
+.nt-section-title {
+    font-size: .9rem; font-weight: 700; color: #94a3b8;
+    margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+    letter-spacing: .5px;
+}
+
+/* 笔记网格 */
+.nt-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+}
+
+/* 笔记卡片 */
+.nt-card {
+    background: rgba(18,28,50,0.5);
+    border: 1px solid rgba(125,211,252,0.08);
+    border-radius: 12px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+}
+
+.nt-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #7dd3fc, #a78bfa);
+    opacity: 0;
+    transition: opacity 0.25s;
+}
+
+.nt-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(125,211,252,0.25);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3), 0 0 20px rgba(125,211,252,0.05);
+}
+
+.nt-card:hover::before { opacity: 1; }
+
+.nt-card.nt-pinned {
+    border-color: rgba(167,139,250,0.25);
+    background: rgba(30,20,60,0.5);
+}
+
+.nt-pin-badge {
+    position: absolute;
+    top: 10px;
+    right: 70px;
+    font-size: 0.8rem;
+}
+
+.nt-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.nt-card-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 0;
+    color: #e2e8f0;
+    flex: 1;
+    padding-right: 10px;
+}
+
+.nt-card-actions {
+    display: flex;
+    gap: 4px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.nt-card:hover .nt-card-actions { opacity: 1; }
+
+.nt-card-btn {
+    background: rgba(255,255,255,0.06);
+    border: none;
+    border-radius: 6px;
+    padding: 4px 8px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background 0.2s;
+}
+
+.nt-card-btn:hover {
+    background: rgba(255,255,255,0.12);
+}
+
+.nt-card-btn-danger:hover {
+    background: rgba(239,68,68,0.2);
+}
+
+.nt-card-preview {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    line-height: 1.5;
+    margin: 0 0 12px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.nt-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nt-card-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.nt-tag {
+    font-size: 0.75rem;
+    color: #7dd3fc;
+    background: rgba(125,211,252,0.1);
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.nt-card-date {
+    font-size: 0.75rem;
+    color: #475569;
+}
+
+/* 空状态 */
+.nt-empty {
+    text-align: center;
+    padding: 80px 20px;
+    color: #64748b;
+}
+
+.nt-empty-icon {
+    font-size: 3rem;
+    margin-bottom: 12px;
+}
+
+.nt-empty-hint {
+    font-size: 0.85rem;
+    margin-top: 8px;
+    color: #475569;
+}
+
+/* 加载状态 */
+.nt-loading {
+    text-align: center;
+    padding: 60px 20px;
+    color: #64748b;
+    grid-column: 1 / -1;
+}
+
+/* 弹窗 */
+.nt-modal {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s;
+}
+
+.nt-modal.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.nt-modal-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(4px);
+}
+
+.nt-modal-content {
+    position: relative;
+    background: rgba(18,28,50,0.95);
+    border: 1px solid rgba(125,211,252,0.15);
+    border-radius: 16px;
+    width: 90%;
+    max-width: 640px;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+.nt-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    border-bottom: 1px solid rgba(125,211,252,0.08);
+}
+
+.nt-modal-header h2 {
+    margin: 0;
+    font-size: 1.15rem;
+    color: #e2e8f0;
+}
+
+.nt-modal-close {
+    background: none;
+    border: none;
+    color: #64748b;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.nt-modal-close:hover { color: #e2e8f0; }
+
+.nt-modal-body {
+    padding: 24px;
+}
+
+.nt-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 16px 24px;
+    border-top: 1px solid rgba(125,211,252,0.08);
+}
+
+.nt-field {
+    margin-bottom: 18px;
+}
+
+.nt-field label {
+    display: block;
+    font-size: 0.85rem;
+    color: #94a3b8;
+    margin-bottom: 6px;
+}
+
+.nt-field input,
+.nt-field textarea {
+    width: 100%;
+    background: rgba(10,16,30,0.6);
+    border: 1px solid rgba(125,211,252,0.12);
+    border-radius: 8px;
+    color: #e0e7f0;
+    padding: 10px 14px;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+}
+
+.nt-field input:focus,
+.nt-field textarea:focus {
+    border-color: rgba(125,211,252,0.35);
+}
+
+.nt-field textarea {
+    resize: vertical;
+    min-height: 160px;
+    font-family: inherit;
+    line-height: 1.6;
+}
+
+/* Toast */
+.nt-toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    z-index: 2000;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+.nt-toast-show { opacity: 1; }
+.nt-toast-success { background: rgba(16,185,129,0.15); color: #34d399; border: 1px solid rgba(16,185,129,0.3); }
+.nt-toast-error { background: rgba(239,68,68,0.15); color: #f87171; border: 1px solid rgba(239,68,68,0.3); }
+.nt-toast-info { background: rgba(125,211,252,0.15); color: #7dd3fc; border: 1px solid rgba(125,211,252,0.3); }
+
+/* 响应式 */
+@media (max-width: 768px) {
+    .nt-header { padding: 16px; flex-direction: column; align-items: stretch; }
+    .nt-grid { grid-template-columns: 1fr; }
+    .nt-content { padding: 16px; }
+    .nt-search-input { width: 100%; }
+    .nt-charts { grid-template-columns: 1fr; }
+    .nt-chart-wide { grid-column: auto; }
+    .nt-stat-item { min-width: calc(50% - 8px); padding: 12px 14px; }
+    .nt-stat-val { font-size: 1.1rem; }
+}
+
+/* 触屏设备始终显示操作按钮 */
+@media (hover: none) and (pointer: coarse) {
+    .nt-card-actions { opacity: 1; }
+    .nt-card-btn { padding: 6px 10px; }
+}

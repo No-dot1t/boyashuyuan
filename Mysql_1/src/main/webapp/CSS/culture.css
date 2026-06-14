@@ -1,0 +1,22 @@
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+    background: linear-gradient(145deg, #0b1018 0%, #05080f 100%);
+    font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+    padding: 2rem 2rem;
+    color: #ffffff;
+    line-height: 1.5;
+}
+.container { max-width: 1100px; margin: 0 auto; }
+h1 { font-size: 2rem; font-weight: 600; background: linear-gradient(135deg, #ffffff, #88ccff); -webkit-background-clip: text; background-clip: text; color: transparent; text-align: center; letter-spacing: -0.5px; margin-bottom: 1rem; border-bottom: 1px solid rgba(0,242,255,0.3); display: inline-block; padding-bottom: 6px; }
+.poem { background:rgba(0,242,255,0.05); border-radius:30px; padding:1.4rem; text-align:center; margin:1rem 0; transition:0.3s; }
+.poem:hover { background:rgba(0,242,255,0.12); transform:translateY(-2px); }
+.event-list { margin: 1.5rem 0; }
+.event-list .event-item { display: flex; gap: 14px; margin-bottom: 0.8rem; border-bottom: 1px dashed rgba(0,242,255,0.2); padding-bottom: 0.5rem; transition: 0.2s; align-items: center; }
+.event-item:hover { transform: translateX(6px); border-bottom-color: #00f2ff; background: rgba(0,242,255,0.05); border-radius: 12px; padding-left: 6px; }
+.event-date { font-weight: bold; color: #ffffff; min-width: 90px; display: flex; align-items: center; gap: 6px; }
+.event-date::before { content: "⏣"; font-size: 1rem; filter: drop-shadow(0 0 2px cyan); }
+.gallery { display: flex; gap: 1rem; flex-wrap: wrap; margin: 1.5rem 0; justify-content: center; }
+.art-card { background: rgba(30, 40, 60, 0.8); border: 1px solid rgba(0,242,255,0.3); padding: 0.8rem; border-radius: 30px; min-width: 100px; text-align: center; transition: all 0.3s; backdrop-filter: blur(4px); }
+.art-card:hover { transform: translateY(-5px) scale(1.03); background: rgba(0,242,255,0.1); border-color: cyan; box-shadow: 0 0 12px rgba(0,242,255,0.4); }
+.footer-text { margin-top: 2rem; text-align: center; border-top: 1px dashed rgba(0,242,255,0.3); padding-top: 1rem; font-size: 0.75rem; color:#7f9fcf; }
+@media (max-width: 600px) { body { padding: 1.2rem; } h1 { font-size: 1.5rem; } }

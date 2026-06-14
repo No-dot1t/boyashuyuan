@@ -1,0 +1,53 @@
+# ============================================
+# 博雅书院 (Boya Academy) - Git Ignore
+# ============================================
+
+# --- Maven Build Output ---
+Mysql_1/target/
+target/
+
+# --- IntelliJ IDEA ---
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# --- Build Output ---
+out/
+
+# --- WorkBuddy Internal ---
+.workbuddy/
+
+# --- Java Compiled Classes ---
+*.class
+
+# --- Package Files (build artifacts) ---
+*.war
+*.jar
+!Mysql_1/src/main/webapp/WEB-INF/lib/*.jar
+
+# --- Logs ---
+*.log
+logs/
+
+# --- OS Generated Files ---
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# --- Office Temp Files ---
+~$*
+
+# --- Temporary Files ---
+*.tmp
+*.bak
+*.swp
+*~
+
+# --- Node (if any frontend tooling) ---
+node_modules/

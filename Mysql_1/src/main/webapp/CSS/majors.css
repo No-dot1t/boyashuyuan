@@ -1,0 +1,501 @@
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+    background: linear-gradient(160deg, #070b14 0%, #0a101e 50%, #0d1225 100%);
+    font-family: 'Inter', 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    padding: 1.5rem 1.2rem;
+    color: #e8ecf5;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* ================================================================
+   书架容器
+   ================================================================ */
+.bs-container { max-width: 1200px; margin: 0 auto; }
+
+/* ================================================================
+   页面头部
+   ================================================================ */
+.bs-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.6rem;
+    padding: 1.2rem 1.5rem;
+    background: linear-gradient(135deg, rgba(18,28,50,0.6), rgba(12,18,35,0.8));
+    border: 1px solid rgba(125,211,252,0.08);
+    border-radius: 16px;
+    backdrop-filter: blur(8px);
+}
+
+.bs-header-icon {
+    font-size: 2rem;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(125,211,252,0.12), rgba(167,139,250,0.08));
+    border: 1px solid rgba(125,211,252,0.15);
+    border-radius: 14px;
+    flex-shrink: 0;
+}
+
+.bs-header-text { flex: 1; min-width: 0; }
+
+.bs-header-text h1 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #f0f4ff, #7dd3fc, #a78bfa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 2px;
+}
+
+.bs-subtitle {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.5px;
+}
+
+/* 搜索框 */
+.bs-search-wrap {
+    position: relative;
+    flex-shrink: 0;
+    width: 240px;
+}
+
+.bs-search-input {
+    width: 100%;
+    padding: 9px 36px 9px 14px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(125,211,252,0.12);
+    border-radius: 10px;
+    color: #e8ecf5;
+    font-size: 0.85rem;
+    font-family: inherit;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.bs-search-input:focus {
+    border-color: rgba(125,211,252,0.35);
+    background: rgba(255,255,255,0.06);
+    box-shadow: 0 0 16px rgba(125,211,252,0.06);
+}
+
+.bs-search-input::placeholder { color: rgba(255,255,255,0.25); }
+
+.bs-search-icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.9rem;
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+/* ================================================================
+   统计条
+   ================================================================ */
+.bs-stats {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+}
+
+.bs-stat {
+    flex: 1;
+    text-align: center;
+    padding: 0.8rem 1rem;
+    background: rgba(18,28,50,0.5);
+    border: 1px solid rgba(125,211,252,0.06);
+    border-radius: 12px;
+    transition: all 0.3s;
+}
+
+.bs-stat:hover {
+    border-color: rgba(125,211,252,0.15);
+    background: rgba(18,28,50,0.7);
+}
+
+.bs-stat-num {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #7dd3fc;
+    text-shadow: 0 0 12px rgba(125,211,252,0.2);
+}
+
+.bs-stat-label {
+    font-size: 0.73rem;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.5px;
+    margin-top: 2px;
+}
+
+/* ================================================================
+   Tab 切换
+   ================================================================ */
+.bs-tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 1.2rem;
+    padding: 4px;
+    background: rgba(18,28,50,0.5);
+    border: 1px solid rgba(125,211,252,0.06);
+    border-radius: 12px;
+}
+
+.bs-tab {
+    flex: 1;
+    padding: 9px 16px;
+    background: transparent;
+    border: none;
+    border-radius: 9px;
+    color: rgba(255,255,255,0.4);
+    font-size: 0.85rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.3s;
+    letter-spacing: 0.3px;
+}
+
+.bs-tab:hover { color: rgba(255,255,255,0.65); background: rgba(255,255,255,0.03); }
+
+.bs-tab.active {
+    color: #7dd3fc;
+    background: rgba(125,211,252,0.1);
+    box-shadow: 0 2px 8px rgba(125,211,252,0.08);
+}
+
+/* ================================================================
+   Tab 面板
+   ================================================================ */
+.bs-tab-panel { display: none; }
+.bs-tab-panel.active { display: block; }
+
+/* ================================================================
+   图书卡片网格
+   ================================================================ */
+.bs-book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 1rem;
+}
+
+/* ================================================================
+   单张图书卡片
+   ================================================================ */
+.bs-book-card {
+    position: relative;
+    background: linear-gradient(160deg, rgba(18,28,50,0.55), rgba(12,18,35,0.7));
+    border: 1px solid rgba(125,211,252,0.07);
+    border-radius: 14px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.16,1,0.3,1);
+    overflow: hidden;
+    animation: bsCardIn 0.35s ease forwards;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+@keyframes bsCardIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.bs-book-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(125,211,252,0.18);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4), 0 0 20px rgba(125,211,252,0.04);
+}
+
+.bs-book-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 20%;
+    right: 20%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(125,211,252,0.4), transparent);
+    border-radius: 0 0 2px 2px;
+    transition: all 0.3s;
+}
+
+.bs-book-card:hover::before {
+    left: 8%;
+    right: 8%;
+    background: linear-gradient(90deg, transparent, #7dd3fc, transparent);
+}
+
+/* ---- 封面区域 ---- */
+.bs-book-cover-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    border-radius: 10px;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(125,211,252,0.06), rgba(167,139,250,0.04));
+    margin-bottom: 0.75rem;
+}
+
+.bs-book-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.bs-book-cover-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    background: linear-gradient(135deg, #1a2740, #0f1a30);
+}
+
+/* ---- 图书信息 ---- */
+.bs-book-info { flex: 1; display: flex; flex-direction: column; }
+
+.bs-book-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #e4ecf7;
+    line-height: 1.4;
+    margin-bottom: 4px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.bs-book-author {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 0.7rem;
+}
+
+/* ---- 操作按钮 ---- */
+.bs-book-actions {
+    display: flex;
+    gap: 6px;
+    margin-top: auto;
+}
+
+.bs-btn {
+    flex: 1;
+    padding: 7px 12px;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-family: inherit;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    transition: all 0.25s;
+    letter-spacing: 0.3px;
+    text-align: center;
+}
+
+.bs-btn-primary {
+    background: linear-gradient(135deg, rgba(125,211,252,0.15), rgba(167,139,250,0.1));
+    color: #7dd3fc;
+    border: 1px solid rgba(125,211,252,0.2);
+}
+
+.bs-btn-primary:hover {
+    background: linear-gradient(135deg, rgba(125,211,252,0.25), rgba(167,139,250,0.18));
+    box-shadow: 0 0 14px rgba(125,211,252,0.1);
+}
+
+.bs-btn-danger {
+    background: rgba(255,100,100,0.1);
+    color: #ff6b6b;
+    border: 1px solid rgba(255,100,100,0.15);
+}
+
+.bs-btn-danger:hover {
+    background: rgba(255,100,100,0.18);
+    box-shadow: 0 0 14px rgba(255,100,100,0.08);
+}
+
+/* ================================================================
+   空状态
+   ================================================================ */
+.bs-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1rem;
+    color: rgba(255,255,255,0.25);
+}
+
+.bs-empty-icon {
+    font-size: 3rem;
+    margin-bottom: 0.8rem;
+    opacity: 0.5;
+}
+
+.bs-empty p {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+.bs-go-btn {
+    padding: 8px 20px;
+    background: linear-gradient(135deg, rgba(125,211,252,0.12), rgba(167,139,250,0.08));
+    border: 1px solid rgba(125,211,252,0.2);
+    border-radius: 10px;
+    color: #7dd3fc;
+    font-size: 0.82rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.bs-go-btn:hover {
+    background: linear-gradient(135deg, rgba(125,211,252,0.2), rgba(167,139,250,0.14));
+    box-shadow: 0 0 16px rgba(125,211,252,0.08);
+}
+
+/* ================================================================
+   未登录
+   ================================================================ */
+.bs-not-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 1rem;
+    background: rgba(18,28,50,0.4);
+    border: 1px solid rgba(125,211,252,0.06);
+    border-radius: 16px;
+}
+
+.bs-not-login-icon { font-size: 3.5rem; margin-bottom: 1rem; opacity: 0.6; }
+
+.bs-not-login h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 0.5rem;
+}
+
+.bs-not-login p {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 1.2rem;
+}
+
+.bs-login-btn {
+    padding: 10px 28px;
+    background: linear-gradient(135deg, rgba(125,211,252,0.15), rgba(167,139,250,0.1));
+    border: 1px solid rgba(125,211,252,0.25);
+    border-radius: 10px;
+    color: #7dd3fc;
+    font-size: 0.9rem;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.bs-login-btn:hover {
+    background: linear-gradient(135deg, rgba(125,211,252,0.25), rgba(167,139,250,0.18));
+    box-shadow: 0 0 20px rgba(125,211,252,0.1);
+}
+
+/* ================================================================
+   加载 + 错误
+   ================================================================ */
+.bs-loading {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 2rem;
+    color: rgba(255,255,255,0.3);
+    font-size: 0.9rem;
+}
+
+.bs-error {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 2rem;
+    color: #ff6b6b;
+    font-size: 0.9rem;
+}
+
+/* ================================================================
+   Toast 提示
+   ================================================================ */
+.bs-toast {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    padding: 10px 22px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-family: inherit;
+    z-index: 9999;
+    opacity: 0;
+    transform: translateX(30px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.bs-toast.show { opacity: 1; transform: translateX(0); }
+
+.bs-toast-success {
+    background: rgba(0,200,150,0.15);
+    border: 1px solid rgba(0,200,150,0.3);
+    color: #00c896;
+}
+
+.bs-toast-error {
+    background: rgba(255,100,100,0.15);
+    border: 1px solid rgba(255,100,100,0.3);
+    color: #ff6b6b;
+}
+
+/* ================================================================
+   响应式
+   ================================================================ */
+@media (max-width: 768px) {
+    body { padding: 1rem 0.6rem; }
+
+    .bs-header {
+        flex-wrap: wrap;
+        padding: 1rem;
+    }
+
+    .bs-header-text h1 { font-size: 1.1rem; }
+
+    .bs-search-wrap { width: 100%; order: 1; margin-top: 0.5rem; }
+
+    .bs-book-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 0.7rem;
+    }
+
+    .bs-stats { gap: 0.5rem; }
+    .bs-stat-num { font-size: 1.2rem; }
+    .bs-tab { padding: 8px 10px; font-size: 0.78rem; }
+}
+
+@media (max-width: 480px) {
+    .bs-book-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.6rem;
+    }
+
+    .bs-book-card { padding: 0.7rem; }
+    .bs-book-title { font-size: 0.8rem; }
+    .bs-btn { padding: 5px 8px; font-size: 0.72rem; }
+}
