@@ -244,19 +244,3 @@ AI 推荐引擎结果：
 | **Maven 编译报错** | 运行 `mvn clean compile` 查看具体错误 |
 | **邮件功能不可用** | 需在 `mail.properties` 中配置 QQ邮箱授权码 |
 | **AI 功能不可用** | 需在 `ai.properties` 中配置 API Key |
-
----
-
-### 快速启动命令汇总
-
-```bash
-# 1. 初始化数据库（仅首次）
-mysql -u root -p123456 < D:\Daima_A\JavaWeb\srp24301\mysql\boya_database.sql
-
-# 2. 启动项目
-cd D:\Daima_A\JavaWeb\srp24301\Mysql_1
-mvn clean tomcat7:run
-
-# 3. 浏览器访问
-# http://localhost:8081
-```
