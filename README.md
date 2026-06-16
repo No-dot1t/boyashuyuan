@@ -54,7 +54,7 @@ CREATE DATABASE IF NOT EXISTS javaweb DEFAULT CHARACTER SET utf8mb4 COLLATE utf8
 
 ```sql
 USE javaweb;
-SOURCE D:/Daima_A/JavaWeb/srp24301/mysql/boya_database.sql;
+SOURCE 路径/mysql/boya_database.sql;
 ```
 
 ### 第三步：配置数据库连接
@@ -73,7 +73,7 @@ jdbc.password=123456       # ← 改成你的MySQL密码
 
 ```bash
 # 进入项目目录
-cd D:\Daima_A\JavaWeb\srp24301\Mysql_1
+cd 路经\Mysql_1
 
 # 编译并启动（使用 Maven Tomcat 插件）
 mvn clean tomcat7:run
